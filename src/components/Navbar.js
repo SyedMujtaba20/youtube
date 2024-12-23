@@ -87,7 +87,7 @@ const Navbar = () => {
                 <div className="flex w-[10%] justify-between items-center">
                     <IoIosNotificationsOutline size={"24px"} className="cursor-pointer" />
                     <CiVideoOn size={"24px"} className="cursor-pointer" />
-                    <Avatar src="https://play-lh.googleusercontent.com/C9CAt9tZr8SSi4zKCxhQc9v4I6AOTqRmnLchsu1wVDQL0gsQ3fmbCVgQmOVM1zPru8UH=w240-h480-rw" size={35} round={true} />
+                    <Avatar src="https://imgcdn.stablediffusionweb.com/2024/3/24/17ee935b-c63a-4374-8fc3-91b2559e02f2.jpg" size={35} round={true} />
                 </div>
 
             </div>

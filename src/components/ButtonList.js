@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {useDispatch} from "react-redux";
 import { setCategory } from '../utils/appSlice';
 
-const buttonList = ["All", "Javascript", "Java", "Live", "Music", "Songs", "Vlogs", "Trending", "Programming", "News", "Technology", "Cricket", "Comedy", "Thriller", "New to you", "Computer Programming", "Netlify", "Coding"]
+const buttonList = ["All", "Javascript", "Java", "Live", "Music", "Songs", "Vlogs", "Trending", "Programming", "News", "Technology", "Cricket", "Comedy", "Thriller", "New to you", "Computer Programming", "Netlify", "Coding", "Pakistani dramas", "T-Series","Arijit Singh"]
 
 const ButtonList = () => {
   const [active, setActive] = useState("All");
@@ -17,7 +17,7 @@ const ButtonList = () => {
   console.log(active);
 
   return (
-    <div className='flex w-full overflow-x-scroll no-scrollbar my-1'>
+    <div className='flex w-full overflow-x-scroll scrollbar my-1'>
       {
         buttonList.map((buttonName, index) => {
           return (

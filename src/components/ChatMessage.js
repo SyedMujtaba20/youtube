@@ -5,7 +5,7 @@ const ChatMessage = ({item}) => {
   return (
     <div className='flex items-center'>
         <div>
-        <Avatar src="https://play-lh.googleusercontent.com/C9CAt9tZr8SSi4zKCxhQc9v4I6AOTqRmnLchsu1wVDQL0gsQ3fmbCVgQmOVM1zPru8UH=w240-h480-rw" size={25} round={true} />
+        <Avatar src="https://imgcdn.stablediffusionweb.com/2024/3/24/17ee935b-c63a-4374-8fc3-91b2559e02f2.jpg" size={25} round={true} />
                             
         </div>
         <div className='flex items-center'>

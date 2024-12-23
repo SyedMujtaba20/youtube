@@ -28,6 +28,7 @@ const VideoCart = ({item}) => {
                     <div className='ml-2'>
                         <h1 className='font-bold'>{item.snippet.title}</h1>
                         <p className='text-sm text-gray-500'>{item.snippet.channelTitle}</p>
+                        
                     </div>
                 </div>
             </div>
