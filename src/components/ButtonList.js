@@ -14,7 +14,6 @@ const ButtonList = () => {
       setActive(tag);
     }
   }
-  console.log(active);
 
   return (
     <div className='flex w-full overflow-x-scroll scrollbar my-1'>

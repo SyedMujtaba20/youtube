@@ -26,69 +26,79 @@ const Watch = () => {
       );
       setSingleVideo(res?.data?.items[0]);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching video data:", error);
+      setSingleVideo(null); // Optionally set an error state to handle UI
     }
   };
 
   const sendMessage = () => {
-    dispatch(setMessage({ name: "Patel", message: input }));
-    setInput("");
+    if (input.trim()) {
+      dispatch(setMessage({ name: "Patel", message: input }));
+      setInput("");
+    }
   };
 
   useEffect(() => {
-    getSingleVideo();
-  }, []);
+    if (videoId) {
+      getSingleVideo();
+    }
+  }, [videoId]); // Add videoId as a dependency to re-fetch data when it changes
 
   return (
-    <div className="w-[100%] ">
-      <div className="flex ml-4 w-[100%] mt-2">
+    <div className="w-full">
+      <div className="flex ml-4 w-full mt-2">
         <div className="flex w-[88%]">
-          <div>
-            <iframe
-              width="900"
-              height="500"
-              src={`https://www.youtube.com/embed/${videoId}?&autoplay=0`}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            ></iframe>
-            <h1 className="font-bold mt-2 text-lg">
-              {singleVideo?.snippet?.title}
-            </h1>
+          {singleVideo ? (
+            <div>
+              <iframe
+                width="900"
+                height="500"
+                src={`https://www.youtube.com/embed/${videoId}?&autoplay=0`}
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
+              <h1 className="font-bold mt-2 text-lg">
+                {singleVideo?.snippet?.title}
+              </h1>
 
-            <div className="flex items-center justify-between">
-              <div className="flex items-center justify-between w-[35%]">
-                <div className="flex">
-                  <Avatar
-                    src={singleVideo?.snippet?.thumbnails?.high?.url}
-                    size={35}
-                    round={true}
-                  />
-                  <h1 className="font-bold ml-2">
-                    {singleVideo?.snippet?.channelTitle}
-                  </h1>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between w-[35%]">
+                  <div className="flex">
+                    <Avatar
+                      src={singleVideo?.snippet?.thumbnails?.high?.url}
+                      size={35}
+                      round={true}
+                    />
+                    <h1 className="font-bold ml-2">
+                      {singleVideo?.snippet?.channelTitle}
+                    </h1>
+                  </div>
+                  <button className="px-4 py-1 font-medium bg-black text-white rounded-full">
+                    Subscribe
+                  </button>
                 </div>
-                <button className="px-4 py-1 font-medium bg-black text-white rounded-full">
-                  Subscribe
-                </button>
-              </div>
-              <div className="flex items-center w-[40%] justify-between mt-2">
-                <div className="flex items-center cursor-pointer bg-gray-200 px-4 py-2 rounded-full">
-                  <AiOutlineLike size="20px" className="mr-5" />
-                  <AiOutlineDislike size="20px" />
-                </div>
-                <div className="flex items-center cursor-pointer bg-gray-200 px-4 py-2 rounded-full">
-                  <PiShareFatLight size="20px" className="mr-2" />
-                  <span>Share</span>
-                </div>
-                <div className="flex items-center cursor-pointer bg-gray-200 px-4 py-2 rounded-full">
-                  <GoDownload />
-                  <span>Download</span>
+                <div className="flex items-center w-[40%] justify-between mt-2">
+                  <div className="flex items-center cursor-pointer bg-gray-200 px-4 py-2 rounded-full">
+                    <AiOutlineLike size="20px" className="mr-5" />
+                    <AiOutlineDislike size="20px" />
+                  </div>
+                  <div className="flex items-center cursor-pointer bg-gray-200 px-4 py-2 rounded-full">
+                    <PiShareFatLight size="20px" className="mr-2" />
+                    <span>Share</span>
+                  </div>
+                  <div className="flex items-center cursor-pointer bg-gray-200 px-4 py-2 rounded-full">
+                    <GoDownload />
+                    <span>Download</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="w-[100%] border border-gray-300 ml-8 rounded-lg h-fit p-4">
+          ) : (
+            <div className="text-center">Loading video...</div>
+          )}
+          
+          <div className="w-full border border-gray-300 ml-8 rounded-lg h-fit p-4">
             <div className="flex justify-between items-center">
               <h1>Top Chat</h1>
               <BsThreeDotsVertical />
@@ -121,6 +131,7 @@ const Watch = () => {
           </div>
         </div>
       </div>
+
       <div
         className="text-sm text-black pt-3 pb-10"
         dangerouslySetInnerHTML={{
