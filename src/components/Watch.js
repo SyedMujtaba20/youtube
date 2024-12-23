@@ -9,7 +9,7 @@ import { GoDownload } from "react-icons/go";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { LuSendHorizonal } from "react-icons/lu";
 import LiveChat from "./LiveChat";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setMessage } from "../utils/chatSlice";
 
 const Watch = () => {
